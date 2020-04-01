@@ -18,7 +18,7 @@ tao_0是储存tau的list
 '''
 epsilon=1.0
 pace=0.0001
-points=100000
+points=50000
 lam_0=[]
 tao_0=[]
 # dxk_0=[]
@@ -55,7 +55,7 @@ def delta2(lamb,tao,n): #second derivative of lambda
 '''
 nu_i=[]
 def nu_0(x):
-    return x**3
+    return x
 
 
 '''
@@ -140,7 +140,7 @@ while j==False:
             xk=(xk1+2*xk2+2*xk3+xk4)/6.
             dlam0+=sign*pace*dxk
             lam0+=pace*xk
-            if abs(dlam0-dlam0_ex)>1:
+            if abs(dlam0-dlam0_ex)>0.5:
                 '''
                 判断是否速度跳动过于厉害，
                 dlam0_ex是上一个时间的速度。
@@ -162,7 +162,7 @@ while j==False:
             #     lam0=-lam0
             # else:
             #     continue
-        #print(lam_0[1200])   #为了证明这个程序仍然存活
+        print(lam_0[1200])   #为了证明这个程序仍然存活
         nu2=[]  #初始化nu
         '''
         下面这段做了个动画
@@ -171,7 +171,7 @@ while j==False:
         '''
         ax.cla()
         ax.set_xlim(0,11)
-        ax.set_ylim(0,1.)
+        ax.set_ylim(0,3.)
         ax.plot(tao_0,np.abs(lam_0))
         plt.pause(0.05)
 
